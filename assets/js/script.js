@@ -160,3 +160,45 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  emailjs.init('_RmgLCfZsiWaXafBt'); // Replace 'YOUR_USER_ID' with your actual user ID
+
+  const form = document.getElementById('contact-form');
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+
+    // Data for form details email
+    const formDetailsParams = {
+      name: formData.get('fullname'),
+      email: formData.get('email'),
+      message: formData.get('message')
+    };
+
+    // Data for thank you email
+    const thankYouParams = {
+      name: formData.get('fullname'),
+      email: formData.get('email') // recipient email address
+    };
+
+    // Send form details to registered email
+    emailjs.send('service_jafthwq', 'template_e9c1vos', formDetailsParams)
+      .then(function() {
+        console.log('Form details sent successfully!');
+
+        // Send thank you email to the user
+        emailjs.send('service_jafthwq', 'template_fbhut37', thankYouParams)
+          .then(function() {
+            alert('Thank you email sent successfully!');
+          }, function(error) {
+            alert('Failed to send thank you email. Error: ' + JSON.stringify(error));
+          });
+
+      }, function(error) {
+        alert('Failed to send form details. Error: ' + JSON.stringify(error));
+      });
+  });
+});

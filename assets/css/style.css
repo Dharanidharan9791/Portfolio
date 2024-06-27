@@ -129,6 +129,14 @@ a { text-decoration: none; }
 
 li { list-style: none; }
 
+.resumeBullets{
+  list-style:disc !important;
+  color: var( --light-gray);
+
+}
+.resumeBulletConatainer{
+  margin-left: 20px;
+}
 img, ion-icon, a, button, time, span { display: block; }
 
 button {
@@ -227,7 +235,10 @@ article.active {
   color: var(--white-2);
   text-transform: capitalize;
 }
-
+.h6{
+  color: var( --light-gray);
+  text-transform: capitalize;
+}
 .h2 { font-size: var(--fs-1); }
 
 .h3 { font-size: var(--fs-2); }
@@ -499,7 +510,7 @@ main {
 
 .about-text {
   color: var(--light-gray);
-  font-size: var(--fs-6);
+  font-size: var(--fs-4);
   font-weight: var(--fw-300);
   line-height: 1.6;
 }
